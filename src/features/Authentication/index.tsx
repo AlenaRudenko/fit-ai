@@ -1,8 +1,9 @@
-import { Button, Input } from "@mui/material";
+import { Button, FormControl, TextField } from "@mui/material";
 import { useStore } from "../../hooks/useStore";
 import { ChangeEvent, useState } from "react";
 import { observer } from "mobx-react";
 import { useNavigate } from "react-router";
+import styles from "./index.module.scss";
 
 const AuthenticationPage = observer(() => {
   const [userLogin, setUserLogin] = useState("");
@@ -33,18 +34,24 @@ const AuthenticationPage = observer(() => {
     }
   };
   return (
-    <div>
-      <Input
-        value={userLogin}
-        placeholder="set your login"
-        onChange={handleChangeLogin}
-      />
-      <Input
-        value={password}
-        placeholder="set your login"
-        onChange={handleChangePassword}
-      />
-      <Button onClick={handleData}>Log in</Button>
+    <div className={styles.container}>
+      <div className={styles.card}>
+        <div className={styles.form}>
+          <TextField
+            value={userLogin}
+            helperText="set your login"
+            onChange={handleChangeLogin}
+          />
+          <TextField
+            value={password}
+            helperText="set your password"
+            onChange={handleChangePassword}
+          />
+          <Button variant="contained" onClick={handleData}>
+            Log in
+          </Button>{" "}
+        </div>
+      </div>
     </div>
   );
 });

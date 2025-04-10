@@ -27,13 +27,18 @@ export const routes: IRoute[] = [
     component: HomePage,
     title: "Главная",
     exact: true,
-    meta: { public: true },
+    meta: { public: false, requiresAuth: true },
   },
-  { path: "/auth", component: AuthenticationPage, title: "Вход" },
+  {
+    path: "/auth",
+    component: AuthenticationPage,
+    title: "Вход",
+    meta: { public: false, requiresAuth: false },
+  },
   {
     path: "/chat",
     component: ChatPage,
     title: "Чат",
-    meta: { public: false, requiresAuth: true },
+    meta: { public: true, requiresAuth: false },
   },
 ];
